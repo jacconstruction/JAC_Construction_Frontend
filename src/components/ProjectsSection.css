@@ -1,0 +1,693 @@
+.projects-section-page {
+  background-color: var(--bg-primary);
+  padding: 8rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.projects-section-page .container {
+  max-width: var(--container-max, 1300px);
+  margin: 0 auto;
+}
+
+/* Header */
+.projects-section-page .section-header {
+  margin-bottom: 6rem;
+}
+
+.projects-section-page .subtitle {
+  color: var(--primary-yellow, #FFC107);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.projects-section-page .title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.projects-section-page .text-accent {
+  color: var(--primary-yellow, #FFC107);
+}
+
+.projects-section-page .title-underline {
+  height: 5px;
+  width: 80px;
+  background-color: var(--primary-yellow, #FFC107);
+}
+
+/* Projects Layout */
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  /* Massive spacing between projects for editorial feel */
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+/* Alternating rows for desktop */
+.project-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Image Visuals */
+.project-visual {
+  flex: 1.6;
+  /* Takes up more space than the text */
+  position: relative;
+}
+
+.image-reveal-wrapper {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.project-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+  display: block;
+  filter: grayscale(0.2);
+  /* Slight desaturation for industrial feel */
+}
+
+.image-overlay-tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  transition: background 0.5s ease;
+}
+
+/* Text Information */
+.project-info {
+  flex: 1;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.project-number {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px #e0e0e0;
+  position: absolute;
+  top: -80px;
+  left: -40px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.project-row:nth-child(even) .project-number {
+  left: auto;
+  right: -40px;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.meta-divider {
+  color: var(--primary-yellow, #FFC107);
+  font-weight: 900;
+}
+
+.project-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.project-description {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Link with animated arrow */
+.explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.explore-link svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-yellow, #FFC107);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Interactions */
+.project-row:hover .project-image {
+  transform: scale(1.08);
+  /* Slow elegant zoom */
+  filter: grayscale(0);
+  /* Reveal full color on hover */
+}
+
+.project-row:hover .image-overlay-tint {
+  background: rgba(0, 0, 0, 0);
+  /* Removes tint to reveal pure image */
+}
+
+.project-row:hover .explore-link {
+  color: var(--primary-yellow, #FFC107);
+}
+
+.project-row:hover .explore-link svg {
+  transform: translateX(15px);
+  /* Arrow shoots to the right */
+}
+
+/* View All Button */
+.view-all-container {
+  margin-top: 8rem;
+  text-align: center;
+}
+
+.outline-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 3px solid var(--text-primary);
+  padding: 1.4rem 4rem;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.outline-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-yellow, #D4AF37);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.outline-btn:hover {
+  border-color: var(--primary-yellow, #D4AF37);
+  color: #000;
+}
+
+.outline-btn:hover::before {
+  left: 0;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* Large Tablets / Laptops */
+@media (max-width: 1200px) {
+  .project-row {
+    gap: 4rem;
+  }
+}
+
+/* Tablets (iPad) */
+@media (max-width: 992px) {
+
+  .project-row,
+  .project-row:nth-child(even) {
+    flex-direction: column;
+    /* Stacks image and text vertically */
+    gap: 3rem;
+  }
+
+  .project-visual {
+    width: 100%;
+  }
+
+  .project-image {
+    height: 450px;
+    /* Reduced from 600px */
+  }
+
+  /* Reset the transparent number positioning */
+  .project-number {
+    top: -40px;
+    left: 0;
+    right: auto;
+  }
+
+  .project-row:nth-child(even) .project-number {
+    right: auto;
+    left: 0;
+  }
+
+  .projects-wrapper {
+    gap: 6rem;
+  }
+}
+
+/* Small Tablets / Large Phones */
+@media (max-width: 768px) {
+  .projects-section-page {
+    padding: 6rem 1.5rem;
+  }
+
+  .projects-section-page .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .projects-wrapper {
+    gap: 5rem;
+  }
+
+  .project-image {
+    height: 350px;
+  }
+
+  .view-all-container {
+    margin-top: 5rem;
+  }
+
+  .outline-btn {
+    padding: 1.2rem 3rem;
+  }
+}
+
+/* Mobile Phones (The Core Enhancements) */
+@media (max-width: 576px) {
+  .projects-section-page {
+    padding: 4rem 1rem;
+  }
+
+  .projects-wrapper {
+    gap: 2.5rem;
+  }
+
+  .project-row {
+    position: relative;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .project-visual {
+    width: 100%;
+  }
+
+  .project-image {
+    height: 280px;
+    /* Reduced for better mobile fit */
+  }
+
+  .image-overlay-tint {
+    background: transparent;
+    opacity: 1;
+    transition: background 0.6s ease;
+  }
+
+  .project-row:hover .image-overlay-tint,
+  .project-row.active .image-overlay-tint {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  }
+
+  .project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 1.5rem;
+    z-index: 10;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+  }
+
+  .project-row:hover .project-info,
+  .project-row.active .project-info {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .project-number {
+    font-size: 4rem;
+    top: 1.5rem;
+    left: 1.5rem;
+    opacity: 0;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    transition: opacity 0.5s ease;
+  }
+
+  .project-row:hover .project-number,
+  .project-row.active .project-number {
+    opacity: 1;
+  }
+
+  .project-row:nth-child(even) .project-number {
+    left: 1.5rem;
+    right: auto;
+  }
+
+  .project-meta {
+    color: var(--primary-yellow, #FFC107);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-description {
+    color: #ddd;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .explore-link {
+    color: var(--primary-yellow, #FFC107);
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .outline-btn {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    font-size: 0.9rem;
+    background: #111;
+    color: #fff;
+    border: none;
+  }
+}
+
+/* =========================================
+   ELITE PROJECT MODAL (NEW)
+   ========================================= */
+
+/* The dark background overlay that covers the website */
+.project-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  /* Blurs the website behind it */
+  z-index: 9999;
+  /* Ensures it sits on top of everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* The actual pop-up window */
+.project-modal-content {
+  background-color: #111111;
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  animation: slideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+}
+
+/* The X Close Button */
+.close-modal-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  background: var(--primary-yellow, #FFC107);
+  color: #000;
+  transform: rotate(90deg);
+}
+
+.close-modal-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Split Layout for the Modal */
+.modal-split {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.modal-image-container {
+  flex: 1.2;
+  position: relative;
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+/* Text Container inside Modal */
+.modal-text-container {
+  flex: 1;
+  padding: 4rem 3rem;
+  color: #fff;
+  overflow-y: auto;
+  /* Allows scrolling if text is long */
+  max-height: 90vh;
+  position: relative;
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(255, 193, 7, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom Scrollbar for the modal text area */
+.modal-text-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-text-container::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.modal-text-container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.modal-number {
+  font-size: 5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.modal-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 2rem 0;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Small data grid (Location, Client, etc.) */
+.modal-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-label {
+  font-size: 0.75rem;
+  color: var(--primary-yellow, #FFC107);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+}
+
+.spec-value {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.modal-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 2.5rem 0;
+}
+
+.modal-subheading {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.modal-description {
+  color: #a0a0a0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Fix the button styling to look like the old link */
+button.explore-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Responsive Modal for Tablets & Mobile */
+@media (max-width: 992px) {
+  .modal-split {
+    flex-direction: column;
+    /* Stack image on top of text */
+  }
+
+  .modal-image-container img {
+    height: 300px;
+    min-height: auto;
+  }
+
+  .project-modal-content {
+    overflow-y: auto;
+    /* Allow the whole modal to scroll on small screens */
+  }
+
+  .modal-text-container {
+    overflow-y: visible;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .modal-number {
+    display: none;
+    /* Hide large number on mobile to save space */
+  }
+}

@@ -1,0 +1,246 @@
+.timeline-section {
+  /* 1. Change to a rich charcoal grey instead of pitch black */
+  background-color: #161616; 
+  
+  /* 2. Add the subtle architectural grid pattern */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center top;
+
+  /* 3. Add an inner shadow to create a distinct separation line from the section above */
+  box-shadow: inset 0 30px 50px rgba(0, 0, 0, 0.8);
+
+  padding: 8rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.timeline-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Adjustments */
+.timeline-section .section-header.center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.timeline-section .subtitle {
+  color: var(--primary-yellow, #FFC107);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  /* Added a subtle text glow */
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+.timeline-section .title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.timeline-section .text-accent {
+  color: var(--primary-yellow, #FFC107);
+  text-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+}
+
+.timeline-section .center-line {
+  height: 5px;
+  width: 80px;
+  background-color: var(--primary-yellow, #FFC107);
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* --- THE TIMELINE STRUCTURE --- */
+.timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* The central vertical "Steel Beam" */
+.structural-beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px; /* Thinned out slightly for elegance */
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.1) 90%, transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-node {
+  position: relative;
+  width: 50%;
+  margin-bottom: 4rem;
+}
+
+.left-node {
+  left: 0;
+  padding-right: 4rem;
+  text-align: right;
+}
+
+.right-node {
+  left: 50%;
+  padding-left: 4rem;
+  text-align: left;
+}
+
+/* THE GLOWING ANCHOR DOTS */
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #111;
+  border: 3px solid var(--primary-yellow, #FFC107);
+  border-radius: 50%;
+  /* The Base Glow */
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.4), inset 0 0 5px rgba(255, 193, 7, 0.5);
+  z-index: 2;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-node .timeline-marker {
+  right: -10px;
+}
+
+.right-node .timeline-marker {
+  left: -10px;
+}
+
+/* GLOSSY CONTENT BOX */
+.timeline-content {
+  /* Linear gradient gives that glassy, premium dark look */
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03); /* Subtle edge light */
+  border-top: 2px solid transparent;
+  /* Inset shadow mimics light hitting the top edge of the glass/box */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background glow inside the card */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 193, 7, 0.03) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.timeline-year {
+  display: block;
+  font-size: 4rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  margin-bottom: -15px;
+  line-height: 1;
+  transition: all 0.4s ease;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* =========================================
+   ELITE HOVER GLOW EFFECTS 
+   ========================================= */
+
+.timeline-node:hover .timeline-marker {
+  background-color: var(--primary-yellow, #FFC107);
+  /* Massive, layered yellow glow when hovered */
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.8), 0 0 40px rgba(255, 193, 7, 0.4), 0 0 0 5px rgba(255, 193, 7, 0.1);
+  transform: scale(1.3);
+}
+
+.timeline-node:hover .timeline-content {
+  transform: translateY(-8px);
+  border-top-color: var(--primary-yellow, #FFC107);
+  /* The card itself glows slightly yellow and casts a deeper drop shadow */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(255, 193, 7, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.timeline-node:hover .timeline-content::before {
+  opacity: 1; /* Reveals the internal radial glow */
+}
+
+.timeline-node:hover .timeline-year {
+  color: rgba(255, 193, 7, 0.05); /* Year subtly fills with yellow light */
+  -webkit-text-stroke: 1px rgba(255, 193, 7, 0.4);
+}
+
+/* =========================================
+   RESPONSIVE (TABLETS & MOBILE)
+   ========================================= */
+
+@media (max-width: 992px) {
+  .left-node { padding-right: 3rem; }
+  .right-node { padding-left: 3rem; }
+  .timeline-content { padding: 2rem; }
+  .timeline-year { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .structural-beam {
+    left: 20px;
+    transform: none;
+  }
+  .timeline-node {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  .left-node, .right-node {
+    left: 0;
+    padding-left: 60px;
+    padding-right: 0;
+    text-align: left;
+  }
+  .left-node .timeline-marker, 
+  .right-node .timeline-marker {
+    left: 10px;
+    right: auto;
+  }
+  .timeline-year {
+    font-size: 2.5rem;
+  }
+  .timeline-content {
+    padding: 1.5rem;
+  }
+}

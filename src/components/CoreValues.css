@@ -1,0 +1,170 @@
+.core-values-section {
+  background-color: var(--bg-dark, #0a0a0a);
+  /* Very dark, sleek background */
+  padding: 8rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.core-values-section .container {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+}
+
+/* Header Adjustments */
+.section-header.center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.subtitle {
+  color: var(--primary-yellow, #FFC107);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.text-accent {
+  color: var(--primary-yellow, #FFC107);
+}
+
+.center-line {
+  height: 4px;
+  width: 60px;
+  background-color: var(--primary-yellow, #FFC107);
+}
+
+/* The "Anti-Box" Grid */
+.values-architectural-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  column-gap: 4rem;
+  row-gap: 5rem;
+}
+
+/* The Node (Replaces the box) */
+.value-node {
+  position: relative;
+  padding: 2rem 0 3rem 0;
+  display: flex;
+  flex-direction: column;
+  /* NO background color, NO border radius! */
+}
+
+/* Giant background numbers */
+.value-watermark {
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  /* Barely visible */
+  line-height: 1;
+  z-index: 0;
+  transition: color 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.value-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon Styling */
+.icon-container {
+  width: 50px;
+  height: 50px;
+  color: var(--primary-yellow, #FFC107);
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.value-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+}
+
+.value-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #a0a0a0;
+  margin: 0;
+  max-width: 90%;
+}
+
+/* Structural Line (The magic that replaces the box border) */
+.structural-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #333333;
+  /* Dark grey default */
+}
+
+.structural-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--primary-yellow, #FFC107);
+  /* Yellow highlight */
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Elite Hover Interactions */
+.value-node:hover .icon-container {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.value-node:hover .structural-line::after {
+  width: 100%;
+  /* Line draws across the bottom like a beam */
+}
+
+.value-node:hover .value-watermark {
+  color: rgba(255, 193, 7, 0.08);
+  /* Watermark glows slightly yellow */
+  transform: scale(1.05) translate(-5px, 5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .values-architectural-grid {
+    column-gap: 2rem;
+    row-gap: 4rem;
+  }
+
+  .core-values-section {
+    padding: 5rem 1.5rem;
+  }
+}
