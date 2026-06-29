@@ -3,6 +3,8 @@ import { motion, type Variants } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import "./ContactPro.css";
 
+import { API_URL } from '../config';
+
 export default function ContactPro() {
   const [formData, setFormData] = useState({
     name: '',
@@ -37,7 +39,7 @@ export default function ContactPro() {
     setStatus(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

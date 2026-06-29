@@ -17,6 +17,8 @@ interface Project {
   gallery?: string[];
 }
 
+import { API_URL } from '../config';
+
 const ProjectsSection = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +26,7 @@ const ProjectsSection = () => {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    fetch('/api/projects')
+    fetch(`${API_URL}/api/projects`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch projects');
         return res.json();

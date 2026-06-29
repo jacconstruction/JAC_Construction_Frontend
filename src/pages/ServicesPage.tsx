@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FaCheck, FaBuilding, FaHome, FaPalette, FaTools, FaDraftingCompass, FaClipboardList } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import { API_URL } from '../config';
+
 interface Service {
   id: string;
   label: string;
@@ -27,7 +29,7 @@ const ServicesPage: React.FC = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('/api/services')
+    fetch(`${API_URL}/api/services`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch services');
         return res.json();

@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowLeft, FaMapMarkerAlt, FaCalendarAlt, FaUser, FaMoneyBillWave, FaClock, FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
+import { API_URL } from '../config';
+
 interface Project {
   id: string;
   title: string;
@@ -28,7 +30,7 @@ const ProjectDetailsPage: React.FC = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch(`/api/projects/${id}`)
+    fetch(`${API_URL}/api/projects/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error('Project not found');
         return res.json();
