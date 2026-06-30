@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import "./ContactPro.css";
 
 import { API_URL } from '../config';
@@ -150,6 +150,7 @@ export default function ContactPro() {
             <div className="social-icons-wrapper">
               <a href="https://www.facebook.com/profile.php?id=61591193533701" target="_blank" rel="noopener noreferrer" className="social-btn"><FaFacebookF /></a>
               <a href="https://www.instagram.com/jacconstruction0/?hl=en" target="_blank" rel="noopener noreferrer" className="social-btn"><FaInstagram /></a>
+              <a href="https://wa.me/916381737399" target="_blank" rel="noopener noreferrer" className="social-btn"><FaWhatsapp /></a>
             </div>
           </motion.div>
 
